@@ -1,4 +1,8 @@
 #include "raylib.h"
+#include "Agent.h"
+#include "FollowMouseBehaviour.h"
+#include "SeekBehaviour.h"
+#include "FleeBehaviour.h"
 
 class Game
 {
@@ -14,9 +18,16 @@ public:
 private:
     // helper functions for run the game loop
     void ProcessInput();
-    void UpdateGame();
+    void UpdateGame(float deltaTime);
     void GenerateOutput();
 
-    Vector2 _ballPosition = { 0.0f, 0.0f };
     Vector2 _mousePosition = { 0.0f, 0.0f };
+    Agent* player;
+    FollowMouseBehaviour* followMouseBehaviour;
+
+    Agent* redEnemy;
+    SeekBehaviour* seekBehaviour;
+
+    Agent* shyEnemy;
+    FleeBehaviour* fleeBehaviour;
 };
